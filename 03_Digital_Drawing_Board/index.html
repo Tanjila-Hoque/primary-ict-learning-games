@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Creative Drawing Studio</title><link rel="stylesheet" href="style.css"></head>
+<body><main class="page">
+<header class="header"><div><span class="eyebrow">PRIMARY ICT • CREATIVE COMPUTING</span><h1>🎨 Creative Drawing Studio</h1><p>Draw, colour, stamp, undo and save your digital masterpiece!</p></div><div class="badge">✨ <span id="points">0</span> Creative Points</div></header>
+<section class="studio">
+<div class="toolbar">
+<div class="tool-group"><strong>Tools</strong><button class="tool active" data-tool="brush">🖌️ Brush</button><button class="tool" data-tool="eraser">🧽 Eraser</button><button class="tool" data-tool="line">📏 Line</button><button class="tool" data-tool="circle">⭕ Circle</button></div>
+<div class="tool-group"><strong>Colours</strong><div class="swatches"><button class="swatch" data-color="#ff5d73" style="background:#ff5d73"></button><button class="swatch" data-color="#ffb703" style="background:#ffb703"></button><button class="swatch" data-color="#2ec4b6" style="background:#2ec4b6"></button><button class="swatch" data-color="#4b45a9" style="background:#4b45a9"></button><button class="swatch" data-color="#222" style="background:#222"></button></div><input id="color" type="color" value="#4b45a9" title="Choose a custom colour"></div>
+<div class="tool-group"><strong>Brush</strong><input id="size" type="range" min="2" max="40" value="8"><span id="sizeValue">8 px</span></div>
+<div class="tool-group actions"><button id="undo">↶ Undo</button><button id="redo">↷ Redo</button><button id="clear">🗑️ Clear</button><button id="save" class="save">💾 Save Picture</button></div>
+</div>
+<div class="canvas-wrap"><canvas id="canvas"></canvas><div class="canvas-tip" id="canvasTip">Start drawing here ✨</div></div>
+<section class="challenge"><div><span class="challenge-icon">🌈</span><div><h2>Creative Challenge</h2><p id="challengeText">Draw a happy sun, then add three clouds!</p></div></div><button id="newChallenge">🎲 New Challenge</button></section>
+<section class="bottom-grid"><div class="card"><h3>⭐ Quick Colours</h3><p>Try warm colours for the sun and cool colours for the sky.</p></div><div class="card"><h3>💡 Artist Tip</h3><p>Use Undo if you make a mistake. Your picture is your own idea — have fun!</p></div><div class="card"><h3>🏅 Gallery Ready</h3><p>When you are happy, save your picture as a PNG and share your creation.</p></div></section>
+</section></main><script src="script.js"></script></body></html>

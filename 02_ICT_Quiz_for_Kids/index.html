@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A fun and interactive ICT quiz for primary school kids.">
+  <title>ICT Adventure Quiz for Kids</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section id="startScreen" class="screen start-screen">
+      <div class="brand-icon">🧠</div>
+      <p class="eyebrow">PRIMARY ICT • LEARN & PLAY</p>
+      <h1>ICT Adventure Quiz</h1>
+      <p class="subtitle">Explore computers, the internet, devices and digital safety through fun challenges!</p>
+
+      <div class="feature-grid">
+        <div class="feature"><span>🎯</span><b>12 Challenges</b><small>Different ICT topics</small></div>
+        <div class="feature"><span>💡</span><b>Smart Hints</b><small>Learn while playing</small></div>
+        <div class="feature"><span>🔥</span><b>Streak Points</b><small>Keep your streak alive</small></div>
+      </div>
+
+      <div class="category-row">
+        <button class="category active" data-category="All">🌈 All Topics</button>
+        <button class="category" data-category="Computer Basics">💻 Basics</button>
+        <button class="category" data-category="Internet Safety">🛡️ Safety</button>
+        <button class="category" data-category="Devices">🖱️ Devices</button>
+      </div>
+      <button id="startBtn" class="primary-btn">Start My ICT Adventure 🚀</button>
+      <p class="small-note">No pressure — every answer teaches you something new.</p>
+    </section>
+
+    <section id="quizScreen" class="screen quiz-screen hidden">
+      <header class="quiz-header">
+        <div class="brand-mini"><span>🧠</span> ICT Adventure</div>
+        <div class="stats">
+          <div class="stat"><span>⭐</span><b id="score">0</b><small>Score</small></div>
+          <div class="stat"><span>🔥</span><b id="streak">0</b><small>Streak</small></div>
+          <div class="stat"><span>❤️</span><b id="lives">3</b><small>Lives</small></div>
+        </div>
+      </header>
+
+      <div class="progress-area">
+        <div class="progress-label"><span id="questionCount">Question 1 of 12</span><span id="categoryLabel">Computer Basics</span></div>
+        <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-top">
+          <span id="difficulty" class="badge">EASY</span>
+          <span id="questionEmoji" class="question-emoji">💻</span>
+        </div>
+        <h2 id="questionText">Question goes here</h2>
+        <p id="questionHintText" class="question-subtext">Choose the best answer.</p>
+      </div>
+
+      <div id="answers" class="answers" aria-live="polite"></div>
+
+      <div id="feedback" class="feedback hidden"></div>
+
+      <div class="action-row">
+        <button id="hintBtn" class="secondary-btn">💡 Hint</button>
+        <button id="nextBtn" class="primary-btn next-btn" disabled>Next Question ➜</button>
+      </div>
+      <div id="hintBox" class="hint-box hidden"></div>
+    </section>
+
+    <section id="resultScreen" class="screen result-screen hidden">
+      <div id="resultIcon" class="result-icon">🏆</div>
+      <p class="eyebrow">ADVENTURE COMPLETE</p>
+      <h1 id="resultTitle">Great Job!</h1>
+      <p id="resultMessage" class="subtitle">You completed your ICT challenge.</p>
+
+      <div class="result-score"><span id="finalScore">0</span><small>points</small></div>
+      <div class="result-grid">
+        <div><b id="correctCount">0</b><span>Correct</span></div>
+        <div><b id="accuracy">0%</b><span>Accuracy</span></div>
+        <div><b id="bestStreak">0</b><span>Best Streak</span></div>
+      </div>
+
+      <div class="achievement" id="achievement">🌟 ICT Explorer</div>
+      <button id="restartBtn" class="primary-btn">Play Again 🔄</button>
+      <button id="homeBtn" class="text-btn">Back to Home</button>
+    </section>
+  </main>
+  <div id="confetti" class="confetti-container" aria-hidden="true"></div>
+  <script src="script.js"></script>
+</body>
+</html>

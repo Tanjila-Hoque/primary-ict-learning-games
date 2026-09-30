@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>My First Computer Lab</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="page">
+  <header class="topbar"><div><span class="eyebrow">PRIMARY ICT • LEARN & PLAY</span><h1>🖥️ My First Computer Lab</h1><p>Explore computer parts, learn what they do, then complete the mini challenge!</p></div><div class="kid-badge">⭐ <span id="stars">0</span> Stars</div></header>
+
+  <section class="hero-grid">
+    <div class="computer-card">
+      <div class="monitor"><div class="screen"><div class="screen-title">WELCOME!</div><div class="screen-icons"><span>📁</span><span>🎨</span><span>🌐</span><span>🎵</span></div><div class="screen-tip">Click a part to explore it</div></div></div>
+      <div class="stand"></div><div class="base"></div>
+      <div class="desk"><div class="keyboard"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="mouse">🖱️</div></div>
+      <button class="part hot monitor-btn" onclick="showPart('Monitor',this)">🖥️ Monitor</button>
+      <button class="part hot keyboard-btn" onclick="showPart('Keyboard',this)">⌨️ Keyboard</button>
+      <button class="part hot mouse-btn" onclick="showPart('Mouse',this)">🖱️ Mouse</button>
+      <button class="part hot speaker-btn" onclick="showPart('Speaker',this)">🔊 Speaker</button>
+    </div>
+    <aside class="info-card"><div class="info-icon" id="infoIcon">💡</div><h2 id="infoTitle">Pick a computer part!</h2><p id="infoText">Tap one of the labels around the computer to discover what it does.</p><div class="fact" id="infoFact">Fun fact: A computer needs different parts to help us see, type, hear and control things.</div></aside>
+  </section>
+
+  <section class="learn-strip"><h2>🎯 Mission 1: Match the Job</h2><p>Choose the computer part that does the job.</p><div id="question" class="question"></div><div id="options" class="options"></div><div class="quiz-footer"><span id="quizProgress">Question 1 of 5</span><span id="quizScore">Score: 0</span></div><button id="nextBtn" class="primary" onclick="nextQuestion()" disabled>Next Mission ➜</button></section>
+
+  <section class="extra-grid"><div class="mini-card"><span>🧠</span><h3>Remember</h3><p>Monitor = see • Keyboard = type • Mouse = point • Speaker = hear</p></div><div class="mini-card"><span>🏆</span><h3>Challenge</h3><p>Can you finish all 5 missions with no mistakes?</p></div><div class="mini-card"><span>🌟</span><h3>Good habit</h3><p>Use clean hands and treat computer equipment gently.</p></div></section>
+
+  <div id="result" class="result hidden"><div class="result-box"><div class="trophy">🏆</div><h2>Computer Explorer Complete!</h2><p id="resultText"></p><button class="primary" onclick="restartQuiz()">Play Again ↻</button></div></div>
+</main>
+<script src="script.js"></script>
+</body></html>

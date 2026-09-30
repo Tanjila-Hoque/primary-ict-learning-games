@@ -1,0 +1,18 @@
+const parts={
+ Monitor:{icon:'🖥️',text:'The monitor shows pictures, words and videos so we can see what the computer is doing.',fact:'Fun fact: A monitor is like the computer’s screen — it helps us see the digital world.'},
+ Keyboard:{icon:'⌨️',text:'The keyboard lets us type letters, numbers and special keys into the computer.',fact:'Fun fact: The space bar is one of the longest keys on a keyboard.'},
+ Mouse:{icon:'🖱️',text:'The mouse helps us move the pointer, click buttons and choose things on the screen.',fact:'Fun fact: A mouse can have buttons and a scroll wheel for different actions.'},
+ Speaker:{icon:'🔊',text:'Speakers play sounds, music, voices and other audio from the computer.',fact:'Fun fact: Some computers have built-in speakers, while others use separate ones.'}
+};
+function showPart(name,el){const p=parts[name];document.getElementById('infoIcon').textContent=p.icon;document.getElementById('infoTitle').textContent=name;document.getElementById('infoText').textContent=p.text;document.getElementById('infoFact').textContent=p.fact;document.querySelectorAll('.hot').forEach(x=>x.classList.remove('selected'));el.classList.add('selected')}
+const questions=[
+ {q:'Which part helps you see pictures and words?',a:['Monitor','Keyboard','Speaker'],c:'Monitor'},
+ {q:'Which part is best for typing your name?',a:['Mouse','Keyboard','Monitor'],c:'Keyboard'},
+ {q:'Which part helps you click an icon?',a:['Speaker','Mouse','Printer'],c:'Mouse'},
+ {q:'Which part lets you hear music?',a:['Speaker','Keyboard','Monitor'],c:'Speaker'},
+ {q:'Which part should you use to type the word “HELLO”?',a:['Monitor','Keyboard','Mouse'],c:'Keyboard'}
+];let i=0,score=0,locked=false;
+function show(){locked=false;const x=questions[i];document.getElementById('question').textContent=x.q;document.getElementById('quizProgress').textContent=`Question ${i+1} of ${questions.length}`;document.getElementById('quizScore').textContent=`Score: ${score}`;const box=document.getElementById('options');box.innerHTML='';x.a.forEach(v=>{const b=document.createElement('button');b.className='option';b.textContent=v;b.onclick=()=>check(b,v);box.appendChild(b)});document.getElementById('nextBtn').disabled=true;document.getElementById('nextBtn').textContent=i===questions.length-1?'See My Result ➜':'Next Mission ➜'}
+function check(btn,v){if(locked)return;locked=true;document.querySelectorAll('.option').forEach(b=>b.disabled=true);if(v===questions[i].c){btn.classList.add('correct');score++;document.getElementById('stars').textContent=score;document.getElementById('infoTitle').textContent='🌟 Nice work!';document.getElementById('infoText').textContent='You found the right computer part.'}else{btn.classList.add('wrong');document.querySelectorAll('.option').forEach(b=>{if(b.textContent===questions[i].c)b.classList.add('correct')});document.getElementById('infoTitle').textContent='💡 Learn from it!';document.getElementById('infoText').textContent=`The correct part is ${questions[i].c}. Try to remember its job!`};document.getElementById('quizScore').textContent=`Score: ${score}`;document.getElementById('nextBtn').disabled=false}
+function nextQuestion(){if(!locked)return;if(i<questions.length-1){i++;show()}else{document.getElementById('resultText').textContent=`You earned ${score} out of ${questions.length} stars. ${score===5?'Amazing! You are a Computer Expert!':score>=3?'Great job! Keep exploring and learning!':'Good try! Play again and discover the computer parts once more!'}`;document.getElementById('result').classList.remove('hidden')}}
+function restartQuiz(){i=0;score=0;document.getElementById('stars').textContent='0';document.getElementById('result').classList.add('hidden');show()}show();

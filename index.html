@@ -1,0 +1,527 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Primary ICT Learning Hub</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(255,255,255,.25), transparent 25%),
+                radial-gradient(circle at 90% 20%, rgba(255,255,255,.18), transparent 25%),
+                linear-gradient(135deg, #4f46e5, #7c3aed, #2563eb);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: min(1150px, 92%);
+            margin: auto;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: .3px;
+        }
+
+        .logo span {
+            margin-right: 8px;
+        }
+
+        .nav-badge {
+            padding: 9px 16px;
+            border: 1px solid rgba(255,255,255,.35);
+            background: rgba(255,255,255,.12);
+            border-radius: 30px;
+            font-size: 13px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* HERO */
+
+        .hero {
+            text-align: center;
+            padding: 55px 0 45px;
+        }
+
+        .hero-icon {
+            width: 105px;
+            height: 105px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 30px;
+            font-size: 55px;
+            background: rgba(255,255,255,.16);
+            border: 1px solid rgba(255,255,255,.25);
+            box-shadow: 0 20px 50px rgba(0,0,0,.18);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            margin-top: 25px;
+            font-size: clamp(38px, 6vw, 66px);
+            line-height: 1.05;
+            font-weight: 900;
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: 20px auto 0;
+            font-size: 18px;
+            line-height: 1.7;
+            color: rgba(255,255,255,.9);
+        }
+
+        .hero-tag {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 10px 18px;
+            border-radius: 30px;
+            background: rgba(255,255,255,.14);
+            border: 1px solid rgba(255,255,255,.25);
+            font-size: 14px;
+        }
+
+        /* PROJECTS */
+
+        .section-title {
+            text-align: center;
+            margin: 20px 0 25px;
+        }
+
+        .section-title h2 {
+            font-size: 28px;
+        }
+
+        .section-title p {
+            margin-top: 7px;
+            opacity: .8;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            padding-bottom: 35px;
+        }
+
+        .card {
+            position: relative;
+            overflow: hidden;
+            background: rgba(255,255,255,.96);
+            color: #1f2937;
+            border-radius: 25px;
+            padding: 30px;
+            min-height: 360px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 18px 45px rgba(0,0,0,.18);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 28px 55px rgba(0,0,0,.25);
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            right: -45px;
+            top: -45px;
+            background: rgba(255,255,255,.25);
+        }
+
+        .card-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            margin-bottom: 22px;
+        }
+
+        .computer .card-icon {
+            background: #dbeafe;
+        }
+
+        .quiz .card-icon {
+            background: #fce7f3;
+        }
+
+        .drawing .card-icon {
+            background: #dcfce7;
+        }
+
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #64748b;
+            line-height: 1.65;
+            flex-grow: 1;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin: 18px 0;
+        }
+
+        .feature {
+            font-size: 11px;
+            padding: 6px 9px;
+            border-radius: 20px;
+            background: #f1f5f9;
+            color: #475569;
+            font-weight: 600;
+        }
+
+        .start-btn {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            padding: 13px 18px;
+            border-radius: 14px;
+            font-weight: 800;
+            transition: .2s;
+        }
+
+        .start-btn:hover {
+            transform: scale(1.02);
+            filter: brightness(.94);
+        }
+
+        .computer .start-btn {
+            background: linear-gradient(135deg, #2563eb, #4f46e5);
+        }
+
+        .quiz .start-btn {
+            background: linear-gradient(135deg, #db2777, #9333ea);
+        }
+
+        .drawing .start-btn {
+            background: linear-gradient(135deg, #059669, #0d9488);
+        }
+
+        /* LEARNING FEATURES */
+
+        .learning {
+            margin: 15px 0 45px;
+            padding: 30px;
+            border-radius: 25px;
+            background: rgba(255,255,255,.11);
+            border: 1px solid rgba(255,255,255,.2);
+            backdrop-filter: blur(12px);
+        }
+
+        .learning h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .learning-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .learning-item {
+            text-align: center;
+            padding: 18px 12px;
+            border-radius: 17px;
+            background: rgba(255,255,255,.1);
+        }
+
+        .learning-item .icon {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .learning-item strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .learning-item span {
+            display: block;
+            margin-top: 5px;
+            font-size: 12px;
+            opacity: .75;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 25px 0 35px;
+            font-size: 13px;
+            color: rgba(255,255,255,.75);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+            .projects {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .learning-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding-top: 18px;
+            }
+
+            .nav-badge {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 35px;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .learning-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .card {
+                min-height: 330px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">
+            <span>🎓</span> Primary ICT Hub
+        </div>
+
+        <div class="nav-badge">
+            🌟 Learn • Play • Create
+        </div>
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="hero-icon">
+            💻
+        </div>
+
+        <h1>
+            Primary ICT<br>
+            Learning Hub
+        </h1>
+
+        <p>
+            Welcome to a fun digital learning space where
+            young learners can explore computers, test their ICT
+            knowledge and express their creativity.
+        </p>
+
+        <div class="hero-tag">
+            🚀 3 Interactive Learning Experiences
+        </div>
+
+    </section>
+
+
+    <!-- PROJECT SECTION -->
+    <section>
+
+        <div class="section-title">
+            <h2>🎮 Choose Your Learning Adventure</h2>
+            <p>Pick an activity and start exploring!</p>
+        </div>
+
+
+        <div class="projects">
+
+            <!-- COMPUTER -->
+            <div class="card computer">
+
+                <div class="card-icon">
+                    💻
+                </div>
+
+                <h3>My First Computer</h3>
+
+                <p>
+                    Discover computer parts, understand what they do,
+                    explore digital concepts and complete fun learning
+                    activities.
+                </p>
+
+                <div class="features">
+                    <span class="feature">🖥️ Computer Parts</span>
+                    <span class="feature">🔍 Explore</span>
+                    <span class="feature">🎯 Activities</span>
+                </div>
+
+                <a
+                    class="start-btn"
+                    href="./01_My_First_Computer/index.html">
+                    🚀 Start Exploring
+                </a>
+
+            </div>
+
+
+            <!-- QUIZ -->
+            <div class="card quiz">
+
+                <div class="card-icon">
+                    🧠
+                </div>
+
+                <h3>ICT Quiz for Kids</h3>
+
+                <p>
+                    Challenge yourself with interactive ICT questions,
+                    different question types, scoring, progress and
+                    exciting challenges.
+                </p>
+
+                <div class="features">
+                    <span class="feature">❓ Quiz</span>
+                    <span class="feature">🏆 Score</span>
+                    <span class="feature">🔥 Challenges</span>
+                </div>
+
+                <a
+                    class="start-btn"
+                    href="./02_ICT_Quiz_for_Kids/index.html">
+                    🧩 Play Quiz
+                </a>
+
+            </div>
+
+
+            <!-- DRAWING -->
+            <div class="card drawing">
+
+                <div class="card-icon">
+                    🎨
+                </div>
+
+                <h3>Digital Drawing Board</h3>
+
+                <p>
+                    Create your own digital artwork using drawing tools,
+                    colors, brushes and creative controls.
+                </p>
+
+                <div class="features">
+                    <span class="feature">🖌️ Draw</span>
+                    <span class="feature">🌈 Colors</span>
+                    <span class="feature">✨ Create</span>
+                </div>
+
+                <a
+                    class="start-btn"
+                    href="./03_Digital_Drawing_Board/index.html">
+                    🎨 Start Creating
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LEARNING FEATURES -->
+    <section class="learning">
+
+        <h2>🌟 What Can You Do Here?</h2>
+
+        <div class="learning-grid">
+
+            <div class="learning-item">
+                <div class="icon">🧠</div>
+                <strong>Learn</strong>
+                <span>Understand ICT concepts</span>
+            </div>
+
+            <div class="learning-item">
+                <div class="icon">🎮</div>
+                <strong>Play</strong>
+                <span>Learn through interaction</span>
+            </div>
+
+            <div class="learning-item">
+                <div class="icon">🏆</div>
+                <strong>Challenge</strong>
+                <span>Test your knowledge</span>
+            </div>
+
+            <div class="learning-item">
+                <div class="icon">🎨</div>
+                <strong>Create</strong>
+                <span>Express your creativity</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            Primary ICT Learning Hub
+            • Interactive Educational Project
+        </p>
+    </footer>
+
+</div>
+
+</body>
+</html>
+```
